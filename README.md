@@ -4,16 +4,13 @@ kb10uy
 変なTwitterクライアント
 
 ## 指針
--------------
 Kbtter1よりももっとタブ化する。
 
 ##機能
--------------
 (追加予定)
 
 ## 参考にしました
 Kbtter2はいろいろなTwitterクライアントを参考にします。
--------------
 
 |内容                                  |クライアント名    |作者TwitterのSN  |
 |:-------------------------------------|:-----------------|:----------------|
@@ -28,12 +25,10 @@ Kbtter2はいろいろなTwitterクライアントを参考にします。
 |新機能のアイデア                      |ななせったーの構想|nanase_coder     |
 
 ##Kbtterのソースについて
--------------
 MIT Licenseとします。
-ただし、Kb10uyと独自仕様のTweetSharpがまだ公開されていないので、そのままでは使えませんが。
+ただし、独自仕様のTweetSharpがまだ公開されていないので、そのままでは使えませんが。
 
 ##ライセンス
--------------
 * KbtterのソースのみのライセンスはLICENSE.txtを参照してください。
 * Kbtterは、拙作ライブラリKb10uyを使用しています。
 * Kbtterは、Apache License 2.0のライブラリを使用しています。
@@ -48,7 +43,6 @@ MIT Licenseとします。
 ###使用ライブラリのライセンス
 
 ####Apache License 2.0
-------------------
 > Apache License
 > Version 2.0, January 2004
 > http://www.apache.org/licenses/ 
@@ -106,8 +100,7 @@ MIT Licenseとします。
 > 9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability. 
 
 #### MIT License(s)
---------------------
-
+----------------
 > TweetSharp
 > 
 > Copyright (c) 2009-2013 Daniel Crenna, Jason Diller, and contributors
