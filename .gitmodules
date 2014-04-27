@@ -1,0 +1,6 @@
+[submodule "KbtterCore"]
+	path = KbtterCore
+	url = git://github.com/kb10uy/KbtterCore.git
+[submodule "Kb10uy"]
+	path = Kb10uy
+	url = git://github.com/kb10uy/Kb10uy.git
