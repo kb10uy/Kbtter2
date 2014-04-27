@@ -23,7 +23,7 @@
             <Image Name="ImageUserIcon"
                Margin="4" Height="36" Width="36"/>
             <StackPanel Margin="4">
-                <ToggleButton Name="ButtonFavorite" Click="ButtonFavorite_Click" Style="{StaticResource BorderButton}">
+                <ToggleButton Name="ButtonFavorite" Click="ButtonFavorite_Click">
                     <StackPanel Name="ButtonFavoriteContent" Height="12"/>
                 </ToggleButton>
                 <ToggleButton Name="ButtonRetweet" Click="ButtonRetweet_Click">
