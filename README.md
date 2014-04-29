@@ -15,7 +15,7 @@ Kbtter2はいろいろなTwitterクライアントを参考にします。
 |:-------------------------------------|:-----------------|:----------------|
 |テクニック                            |Kbtter1           |kb10uy           |
 |かわいい成分                          |Syuilotter        |syuilo           |
-|余計なものを表示しないというようなアレ|Soarer            |chitoku_c        |
+|余計なものを表示しないというようなアレ|Soarer            |java_shit        |
 |大本なUIデザイン                      |Shrimp            |ulicknormanowen  |
 |ツイート表示                          |mikutter          |toshi_a          |
 |イケてるUIという志向                  |JavatterFX        |orekyuu          |

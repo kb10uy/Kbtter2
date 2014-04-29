@@ -68,7 +68,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="RoundTabControl" TargetType="TabControl">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="White"/>
@@ -102,4 +102,41 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!--ここから各xaml依存-->
+    <ControlTemplate x:Key="FavoriteToggleButton" TargetType="ToggleButton">
+        <Border Name="Main">
+            <Border.Background>
+                <ImageBrush ImageSource="/KbtterPolyethylene;component/res/favno.png" Stretch="None"/>
+            </Border.Background>
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Main" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/KbtterPolyethylene;component/res/fav.png" Stretch="None"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="RetweetToggleButton" TargetType="ToggleButton">
+        <Border Name="Main">
+            <Border.Background>
+                <ImageBrush ImageSource="/KbtterPolyethylene;component/res/rtno.png" Stretch="None"/>
+            </Border.Background>
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Main" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/KbtterPolyethylene;component/res/rt.png" Stretch="None"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

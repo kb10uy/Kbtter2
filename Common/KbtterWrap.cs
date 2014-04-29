@@ -79,5 +79,43 @@ namespace KbtterPolyethylene.Common
                 return dn >= 100 ? dn.ToString("#") + "M" : dn.ToString("#.#") + "M";
             }
         }
+
+        public IList<Tuple<string, string, string>> GetReplaceUrlList(TwitterStatus st)
+        {
+            var ret = new List<Tuple<string, string, string>>();
+            for (int i = 0; i < st.Entities.Urls.Count; i++)
+            {
+                ret.Add(new Tuple<string, string, string>(
+                    st.Entities.Urls[i].Value,
+                    st.Entities.Urls[i].DisplayUrl,
+                    "WEB" + st.Entities.Urls[i].ExpandedValue));
+            }
+
+            for (int i = 0; i < st.Entities.Media.Count; i++)
+            {
+                ret.Add(new Tuple<string, string, string>(
+                    st.Entities.Media[i].Url,
+                    st.Entities.Media[i].DisplayUrl,
+                    "MED" + st.Entities.Media[i].ExpandedUrl));
+            }
+
+            for (int i = 0; i < st.Entities.Mentions.Count; i++)
+            {
+                ret.Add(new Tuple<string, string, string>(
+                    "@" + st.Entities.Mentions[i].ScreenName,
+                    "@" + st.Entities.Mentions[i].ScreenName,
+                    "MEN" + st.Entities.Mentions[i].ScreenName));
+            }
+
+            for (int i = 0; i < st.Entities.HashTags.Count; i++)
+            {
+                ret.Add(new Tuple<string, string, string>(
+                    "#" + st.Entities.HashTags[i].Text,
+                    "#" + st.Entities.HashTags[i].Text,
+                    "TAG" + st.Entities.HashTags[i].Text));
+            }
+
+            return ret;
+        }
     }
 }
