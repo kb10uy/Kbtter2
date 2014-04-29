@@ -80,42 +80,48 @@ namespace KbtterPolyethylene.Common
             }
         }
 
-        public IList<Tuple<string, string, string>> GetReplaceUrlList(TwitterStatus st)
+        public IList<KbtterHyperlinkInfo> GetReplaceUrlList(TwitterStatus st)
         {
-            var ret = new List<Tuple<string, string, string>>();
-            for (int i = 0; i < st.Entities.Urls.Count; i++)
+            var ret = new List<KbtterHyperlinkInfo>();
+            foreach (var i in st.Entities)
             {
-                ret.Add(new Tuple<string, string, string>(
-                    st.Entities.Urls[i].Value,
-                    st.Entities.Urls[i].DisplayUrl,
-                    "WEB" + st.Entities.Urls[i].ExpandedValue));
+                var t = new KbtterHyperlinkInfo();
+                t.Start = i.StartIndex;
+                t.End = i.EndIndex;
+                switch (i.EntityType)
+                {
+                    case TwitterEntityType.Url:
+                        var u = i as TwitterUrl;
+                        t.Display = u.DisplayUrl;
+                        t.Navigate = "WEB" + u.ExpandedValue;
+                        break;
+                    case TwitterEntityType.Media:
+                        var d = i as TwitterMedia;
+                        t.Display = d.DisplayUrl;
+                        t.Navigate = "MED" + d.ExpandedUrl;
+                        break;
+                    case TwitterEntityType.Mention:
+                        var m = i as TwitterMention;
+                        t.Display = "@" + m.ScreenName;
+                        t.Navigate = "MEN" + m.ScreenName;
+                        break;
+                    case TwitterEntityType.HashTag:
+                        var h = i as TwitterHashTag;
+                        t.Display = "#" + h.Text;
+                        t.Navigate = "TAG" + h.Text;
+                        break;
+                }
+                ret.Add(t);
             }
-
-            for (int i = 0; i < st.Entities.Media.Count; i++)
-            {
-                ret.Add(new Tuple<string, string, string>(
-                    st.Entities.Media[i].Url,
-                    st.Entities.Media[i].DisplayUrl,
-                    "MED" + st.Entities.Media[i].ExpandedUrl));
-            }
-
-            for (int i = 0; i < st.Entities.Mentions.Count; i++)
-            {
-                ret.Add(new Tuple<string, string, string>(
-                    "@" + st.Entities.Mentions[i].ScreenName,
-                    "@" + st.Entities.Mentions[i].ScreenName,
-                    "MEN" + st.Entities.Mentions[i].ScreenName));
-            }
-
-            for (int i = 0; i < st.Entities.HashTags.Count; i++)
-            {
-                ret.Add(new Tuple<string, string, string>(
-                    "#" + st.Entities.HashTags[i].Text,
-                    "#" + st.Entities.HashTags[i].Text,
-                    "TAG" + st.Entities.HashTags[i].Text));
-            }
-
             return ret;
         }
+    }
+
+    public class KbtterHyperlinkInfo
+    {
+        public string Display { get; set; }
+        public string Navigate { get; set; }
+        public int Start { get; set; }
+        public int End { get; set; }
     }
 }

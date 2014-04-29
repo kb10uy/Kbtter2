@@ -28,7 +28,6 @@ namespace KbtterPolyethylene.View
         KbtterContext ctx;
         TwitterStatus stat;
         TwitterUser rtuser;
-        int fav, rt;
         dynamic dynraw;
         public TweetPage(KbtterContext ct, TwitterStatus st)
         {
@@ -79,54 +78,21 @@ namespace KbtterPolyethylene.View
         void SetMainText()
         {
             var url = ctx.GetReplaceUrlList(stat);
-            var spl = new List<Tuple<string, bool, Tuple<string, string>>>();
-            spl.Add(new Tuple<string, bool, Tuple<string, string>>(stat.TextDecoded, false, null));
+
+            TextBlockMainText.Inlines.Clear();
+            int now = 0;
+            var s = stat.TextDecoded;
             foreach (var i in url)
             {
-                bool suc = false;
-                Tuple<string, bool, Tuple<string, string>> bfs = null, urs = null, afs = null;
-                int id = 0;
-                foreach (var s in spl.Where(p => !p.Item2))
-                {
-                    id = spl.IndexOf(s);
-                    int fui = s.Item1.IndexOf(i.Item1);
-                    if (fui != -1)
-                    {
-                        //現在のスパンにurl発見
-                        suc = true;
-                        var bef = s.Item1.Substring(0, fui);
-                        var aft = s.Item1.Substring(bef.Length + i.Item1.Length);
-                        bfs = new Tuple<string, bool, Tuple<string, string>>(bef, false, null);
-                        urs = new Tuple<string, bool, Tuple<string, string>>(
-                            i.Item1, true,
-                            new Tuple<string, string>(i.Item2, i.Item3));
-                        afs = new Tuple<string, bool, Tuple<string, string>>(aft, false, null);
-                    }
-                }
-                if (suc)
-                {
-                    spl.RemoveAt(id);
-                    spl.Insert(id, bfs);
-                    spl.Insert(id + 1, urs);
-                    spl.Insert(id + 2, afs);
-                }
+                TextBlockMainText.Inlines.Add(s.Substring(now, i.Start - now));
+                Hyperlink hl = new Hyperlink();
+                hl.RequestNavigate += hl_RequestNavigate;
+                hl.Inlines.Add(i.Display);
+                hl.NavigateUri = new Uri(i.Navigate, UriKind.RelativeOrAbsolute);
+                TextBlockMainText.Inlines.Add(hl);
+                now = i.End;
             }
-            TextBlockMainText.Inlines.Clear();
-            foreach (var i in spl)
-            {
-                if (i.Item2)
-                {
-                    Hyperlink hl = new Hyperlink();
-                    hl.NavigateUri = new Uri(i.Item3.Item2, UriKind.RelativeOrAbsolute);
-                    hl.Inlines.Add(i.Item3.Item1);
-                    hl.RequestNavigate += hl_RequestNavigate;
-                    TextBlockMainText.Inlines.Add(hl);
-                }
-                else
-                {
-                    TextBlockMainText.Inlines.Add(i.Item1);
-                }
-            }
+            if (now != s.Length) TextBlockMainText.Inlines.Add(s.Substring(now));
         }
 
         void hl_RequestNavigate(object sender, RequestNavigateEventArgs e)
