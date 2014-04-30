@@ -34,7 +34,7 @@ namespace KbtterPolyethylene.View
         void InitializeKbtterCore()
         {
             context = new KbtterContext("fV3meTB3URhtSx7WGjQ", "3AVAf20e64Al9edgrrJnJjI5a67fp2WUPxP9xtnLsY");
-            context.Kbtter.Authenticate("318376822-6cD62AWw4RW2hQAPNIWS1DeILgOBXooXbxinTUiD", "jBBlzqiBDiT0UukgPFyfK1uWd5VU3P832cD5RpyoO36Hl");
+            context.Kbtter.Authenticate("AccessToken", "AccessTokenSecret");
 
             context.RequestMainTabNew += AddNewTab;
 
