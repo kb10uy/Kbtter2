@@ -1,0 +1,29 @@
+﻿<Page x:Class="KbtterPolyethylene.View.WebBrowserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="640"
+	Title="WebBrowserPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <ToolBar>
+            <Button Name="ButtonBack" Click="ButtonBack_Click">戻る</Button>
+            <Button Name="ButtonNext" Click="ButtonNext_Click">進む</Button>
+            <Separator/>
+            <TextBox Width="360" Name="TextBoxUrl"/>
+            <Button Name="ButtonNavigate" Click="ButtonNavigate_Click">移動</Button>
+            <Button Name="ButtonRefresh" Click="ButtonRefresh_Click">更新</Button>
+            <Separator/>
+            <Button Name="ButtonOpenDefault" Click="ButtonOpenDefault_Click">標準ブラウザでみる</Button>
+        </ToolBar>
+        
+        <WebBrowser Name="WebBrowserMain" Grid.Row="1" Navigated="WebBrowserMain_Navigated"/>
+    </Grid>
+</Page>

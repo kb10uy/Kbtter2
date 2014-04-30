@@ -12,11 +12,12 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto" Name="RowDefinitionNewTweet"/>
+            <RowDefinition Height="4"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="24"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Background="{StaticResource TwitterColorPrimary}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -28,12 +29,44 @@
                         <TextBlock FontFamily="Marlett" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">6</TextBlock>
                     </MenuItem.Header>
                     <MenuItem Name="MenuSetting" Click="MenuSetting_Click" Header="設定"/>
-                    <MenuItem Name="MenuExit" Click="MenuExit_Click" Header="終了"/> 
+                    <MenuItem Name="MenuExit" Click="MenuExit_Click" Header="終了"/>
                 </MenuItem>
             </Menu>
         </Grid>
-        
-        <TabControl Grid.Row="1" Margin="0,2,0,0" Background="{StaticResource TwitterColorWhite}" Style="{StaticResource RoundTabControl}">
+
+        <Expander Name="ExpanderNewTweet" Grid.Row="1" Header="新しいツイート"
+                  Collapsed="ExpanderNewTweet_Collapsed" Expanded="ExpanderNewTweet_Collapsed">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="160"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Name="PanelNewTweetReply"/>
+                <StackPanel Grid.Row="2" Name="PanelNewTweetImages"/>
+
+                <TextBox Grid.Row="2" Name="TextBoxNewTweetText" AcceptsReturn="True" 
+                             VerticalAlignment="Stretch"
+                             VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                             FontSize="14" Margin="4" TextChanged="TextBoxNewTweetText_TextChanged"/>
+                <DockPanel Grid.Column="1" Grid.Row="2">
+                    <StackPanel DockPanel.Dock="Top">
+                        <StackPanel Orientation="Horizontal" Margin="4">
+                            <TextBlock Width="80" TextAlignment="Center" VerticalAlignment="Center">残り</TextBlock>
+                            <TextBlock Name="TextBlockNewTweetRestLetters" FontSize="16" TextAlignment="Right">140</TextBlock>
+                        </StackPanel>
+                        <Button Name="ButtonNewTweetAddImage" Margin="4">画像を追加</Button>
+                    </StackPanel>
+                    <Button Name="ButtonNewTweetSend" Margin="4" DockPanel.Dock="Bottom">つぶやく</Button>
+                </DockPanel>
+            </Grid>
+        </Expander>
+
+        <TabControl Name="TabControlMain" Grid.Row="3" Margin="0,2,0,0" Background="{StaticResource TwitterColorWhite}" Style="{StaticResource RoundTabControl}">
             <TabItem Header="タイムライン" Name="TabTimeline" Style="{StaticResource RoundTabItem}">
                 <ListBox Name="ListBoxTimeline" HorizontalContentAlignment="Stretch" 
                          ScrollViewer.CanContentScroll="False"
@@ -41,38 +74,15 @@
                          />
             </TabItem>
             <TabItem Header="通知" Name="TabNotify" Style="{StaticResource RoundTabItem}">
-                <ListBox Name="ListBoxNotify"/>
+                <ListBox Name="ListBoxNotify" HorizontalContentAlignment="Stretch" 
+                         ScrollViewer.CanContentScroll="False"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
             </TabItem>
         </TabControl>
-        
-        <Expander Name="ExpanderNewTweet" Grid.Row="2" Header="新しいツイート">
-            <StackPanel>
-                <StackPanel Name="PanelNewTweetReply"/>
-                <StackPanel Name="PanelNewTweetImages"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Name="TextBoxNewTweetText" AcceptsReturn="True" 
-                             VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                             MinHeight="100" FontSize="16" Margin="4"/>
-                    <DockPanel Grid.Column="1">
-                        <StackPanel DockPanel.Dock="Top">
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="80" TextAlignment="Center" VerticalAlignment="Center">残り</TextBlock>
-                                <TextBlock Name="TextBlockNewTweetRestLetters" FontSize="16" TextAlignment="Right">140</TextBlock>
-                            </StackPanel>
-                            <Button Name="ButtonNewTweetAddImage" Margin="4">画像を追加</Button>
-                        </StackPanel>
-                        <Button Name="ButtonNewTweetSend" Margin="4" DockPanel.Dock="Bottom">つぶやく</Button>
-                    </DockPanel>
-                </Grid>
-            </StackPanel>
-        </Expander>
 
-        <StatusBar Grid.Row="3" Name="StatusBarMain" Background="{StaticResource TwitterColorWhite}">
-            
+
+        <StatusBar Grid.Row="4" Name="StatusBarMain">
+
         </StatusBar>
     </Grid>
 </Window>

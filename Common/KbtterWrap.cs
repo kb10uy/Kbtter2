@@ -40,10 +40,12 @@ namespace KbtterPolyethylene.Common
             TimelineStatusTimeAbsolute = false;
         }
 
+        #region Twitter関係
         void Kbtter_StreamingStatus(TwitterUserStreamStatus obj)
         {
             _stcache.Add(obj.Status);
         }
+
 
         public Task<IEnumerable<TwitterStatus>> GetHomeTimelineStatusesByRest()
         {
@@ -56,10 +58,13 @@ namespace KbtterPolyethylene.Common
                 return t;
             });
         }
+        #endregion
     }
 
     public partial class KbtterContext
     {
+        public event Action<string> RequestMainTabNew;
+
         public string GetTiny(int num)
         {
             var dn = (double)num;
@@ -78,6 +83,11 @@ namespace KbtterPolyethylene.Common
                 dn /= 1000000;
                 return dn >= 100 ? dn.ToString("#") + "M" : dn.ToString("#.#") + "M";
             }
+        }
+
+        public void RequestAddNewTab(string cmd)
+        {
+            if (RequestMainTabNew != null) RequestMainTabNew(cmd);
         }
 
         public IList<KbtterHyperlinkInfo> GetReplaceUrlList(TwitterStatus st)

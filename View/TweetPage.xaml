@@ -52,7 +52,7 @@
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <TextBlock Name="TextBlockMainText" Margin="4" Grid.Row="1" FontSize="14">
+            <TextBlock Name="TextBlockMainText" Margin="4" Grid.Row="1" FontSize="14" TextWrapping="Wrap">
                 MainText
             </TextBlock>
             <TextBlock Name="TextBlockRetweetedBy" Foreground="Gray" Margin="2" Grid.Row="2">Retweeted by</TextBlock>

@@ -121,6 +121,12 @@
     <Compile Include="View\TweetPage.xaml.cs">
       <DependentUpon>TweetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WebBrowserPage.xaml.cs">
+      <DependentUpon>WebBrowserPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,6 +177,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WebBrowserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TweetSharp-myBuild\src\TweetSharp\TweetSharp.csproj">
@@ -191,6 +205,10 @@
   <ItemGroup>
     <Resource Include="res\favno.png" />
     <Resource Include="res\rtno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\close.png" />
+    <Resource Include="res\closeover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

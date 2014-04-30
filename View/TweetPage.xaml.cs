@@ -57,6 +57,7 @@ namespace KbtterPolyethylene.View
 
             HyperlinkScreenName.Inlines.Clear();
             HyperlinkScreenName.Inlines.Add(stat.User.ScreenName);
+            HyperlinkScreenName.Tag = "MEN" + stat.User.ScreenName;
             HyperlinkScreenName.NavigateUri = new Uri("MEN" + stat.User.ScreenName, UriKind.RelativeOrAbsolute);
             HyperlinkScreenName.RequestNavigate += hl_RequestNavigate;
 
@@ -88,31 +89,21 @@ namespace KbtterPolyethylene.View
                 Hyperlink hl = new Hyperlink();
                 hl.RequestNavigate += hl_RequestNavigate;
                 hl.Inlines.Add(i.Display);
+                hl.Tag = i.Navigate;
                 hl.NavigateUri = new Uri(i.Navigate, UriKind.RelativeOrAbsolute);
                 TextBlockMainText.Inlines.Add(hl);
                 now = i.End;
             }
-            if (now != s.Length) TextBlockMainText.Inlines.Add(s.Substring(now));
+            if (now < s.Length) TextBlockMainText.Inlines.Add(s.Substring(now));
         }
 
         void hl_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             e.Handled = true;
-            var type = e.Uri.ToString().Substring(0, 3);
-            var act = e.Uri.ToString().Substring(3);
-            switch (type)
-            {
-                case "WEB":
-                    break;
-                case "MED":
-                    break;
-                case "MEN":
-                    break;
-                case "TAG":
-                    break;
-                default:
-                    break;
-            }
+            //var act = e.Uri.ToString();
+            var act = (sender as Hyperlink).Tag as string;
+            ctx.RequestAddNewTab(act);
+
         }
 
 

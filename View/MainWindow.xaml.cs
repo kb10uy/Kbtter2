@@ -36,6 +36,8 @@ namespace KbtterPolyethylene.View
             context = new KbtterContext("fV3meTB3URhtSx7WGjQ", "3AVAf20e64Al9edgrrJnJjI5a67fp2WUPxP9xtnLsY");
             context.Kbtter.Authenticate("318376822-6cD62AWw4RW2hQAPNIWS1DeILgOBXooXbxinTUiD", "jBBlzqiBDiT0UukgPFyfK1uWd5VU3P832cD5RpyoO36Hl");
 
+            context.RequestMainTabNew += AddNewTab;
+
             context.Kbtter.StreamingStatus += (p) => this.Dispatch(() => Kbtter_StreamingStatus(p));
             context.Kbtter.StartStreaming();
         }
@@ -47,6 +49,12 @@ namespace KbtterPolyethylene.View
                 MainKey = Key.N,
                 Modifers = ModifierKeys.Control,
                 Action = ToggleNewTweetPane
+            });
+            context.Shortcut.Add(new KbtterShortcut
+            {
+                MainKey = Key.Enter,
+                Modifers = ModifierKeys.Control,
+                Action = SendTweet
             });
         }
 
@@ -67,17 +75,102 @@ namespace KbtterPolyethylene.View
             Application.Current.Shutdown();
         }
 
+
+
         #region UI隠蔽
+
+        void AddNewTab(string cmd)
+        {
+            string type = cmd.Substring(0, 3);
+            string target = cmd.Substring(3);
+            switch (type)
+            {
+                case "WEB":
+                case "MED":
+                    var wbt = CreateMainTab(new TextBlock { Text = target.Substring(0, 20) + "..." },
+                                            new Frame { Content = new WebBrowserPage(target) });
+                    TabControlMain.Items.Add(wbt);
+                    wbt.IsSelected = true;
+                    break;
+
+                case "MEN":
+                    var uit = CreateMainTab(new TextBlock { Text = target + "さんの情報" },
+                                            new Frame { Content = new UserPage() });
+                    TabControlMain.Items.Add(uit);
+                    uit.IsSelected = true;
+                    break;
+                case "TAG":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        TabItem CreateMainTab(UIElement h, UIElement c)
+        {
+            var tab = new TabItem();
+            var sp = new StackPanel { Orientation = Orientation.Horizontal };
+            sp.Children.Add(h);
+
+            var cb = GetCloseButton();
+            cb.Tag = tab;
+            cb.Click += (s, e) =>
+            {
+                CloseButton_Click((s as Button).Tag);
+            };
+            sp.Children.Add(cb);
+            tab.Header = sp;
+            tab.Content = c;
+            tab.Style = TryFindResource("RoundTabItem") as Style;
+            return tab;
+        }
+
+        //閉じるボタン関係
+        // ////////////////////////////////////////////////////
+        public Button GetCloseButton()
+        {
+            Button bt = new Button();
+            bt.Template = GetTemplate("CloseButton");
+            return bt;
+        }
+
+        void CloseButton_Click()
+        {
+            TabControlMain.Items.RemoveAt(TabControlMain.SelectedIndex);
+        }
+
+        void CloseButton_Click(object tab)
+        {
+            TabControlMain.Items.Remove(tab);
+        }
 
         public ControlTemplate GetTemplate(string name)
         {
             return TryFindResource(name) as ControlTemplate;
         }
 
+        //新しいツイート関係
+        // ////////////////////////////////////////////////////
+        async void SendTweet()
+        {
+            if (!ExpanderNewTweet.IsExpanded) return;
+            await context.Kbtter.TweetTaskAsync(TextBoxNewTweetText.Text);
+            TextBoxNewTweetText.Text = "";
+            ExpanderNewTweet.IsExpanded = false;
+        }
+
         void ToggleNewTweetPane()
         {
             ExpanderNewTweet.IsExpanded = !ExpanderNewTweet.IsExpanded;
+            if (!ExpanderNewTweet.IsExpanded) TextBoxNewTweetText.Text = "";
         }
+
+        private void TextBoxNewTweetText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var twt = TextBoxNewTweetText.Text;
+            TextBlockNewTweetRestLetters.Text = (140 - twt.Length).ToString();
+        }
+
 
         void AddStatusToTimeline(TwitterStatus st)
         {
@@ -112,6 +205,10 @@ namespace KbtterPolyethylene.View
             Exit();
         }
 
+        private void ExpanderNewTweet_Collapsed(object sender, RoutedEventArgs e)
+        {
+        }
+
         #endregion
 
         #region メニューイベントハンドラ
@@ -127,5 +224,7 @@ namespace KbtterPolyethylene.View
         }
 
         #endregion
+
+
     }
 }

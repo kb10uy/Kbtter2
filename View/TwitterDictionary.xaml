@@ -68,7 +68,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    
     <Style x:Key="RoundTabControl" TargetType="TabControl">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="White"/>
@@ -102,7 +103,24 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <ControlTemplate x:Key="CloseButton" TargetType="Button">
+        <Border Name="Main" Margin="4,0,0,0" Width="16" Height="16">
+            <Border.Background>
+                <ImageBrush ImageSource="/KbtterPolyethylene;component/res/close.png" Stretch="None"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Main" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/KbtterPolyethylene;component/res/closeover.png" Stretch="None"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
     <!--ここから各xaml依存-->
     <ControlTemplate x:Key="FavoriteToggleButton" TargetType="ToggleButton">
         <Border Name="Main">
