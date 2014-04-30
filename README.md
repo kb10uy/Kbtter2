@@ -25,7 +25,12 @@ Kbtter2はいろいろなTwitterクライアントを参考にします。
 
 ##Kbtterのソースについて
 MIT Licenseとします。
-ただし、Kb10uyと独自仕様のTweetSharpがまだ公開されていないので、そのままでは使えませんが。
+
+##Special Thanks
+* azyobuzin
+* java_shit
+* ulicknormanowen 
+
 
 ##ライセンス
 * KbtterのソースのみのライセンスはLICENSE.txtを参照してください。
