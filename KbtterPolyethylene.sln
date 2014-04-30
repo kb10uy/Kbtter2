@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KbtterPolyethylene", "KbtterPolyethylene\KbtterPolyethylene.csproj", "{CCDC3FED-5866-4C85-9F70-138255878E9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kbtter", "KbtterCore\Kbtter.csproj", "{05D75D2C-126F-4081-8D23-B63F78F7A995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSharp", "TweetSharp\src\TweetSharp\TweetSharp.csproj", "{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Debug|x86.ActiveCfg = Debug|x86
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Debug|x86.Build.0 = Debug|x86
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Release|x86.ActiveCfg = Release|x86
+		{CCDC3FED-5866-4C85-9F70-138255878E9A}.Release|x86.Build.0 = Release|x86
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Debug|x86.ActiveCfg = Debug|x86
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Debug|x86.Build.0 = Debug|x86
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Release|x86.ActiveCfg = Release|x86
+		{05D75D2C-126F-4081-8D23-B63F78F7A995}.Release|x86.Build.0 = Release|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Debug|Any CPU.Build.0 = Debug|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Debug|x86.ActiveCfg = Debug|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Debug|x86.Build.0 = Debug|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Release|Any CPU.ActiveCfg = Release|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Release|Any CPU.Build.0 = Release|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Release|x86.ActiveCfg = Release|x86
+		{10BFAA13-B836-4B37-B2D3-D4FEB3F3C484}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
