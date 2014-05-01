@@ -42,8 +42,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Margin="2" Orientation="Horizontal">
-                <TextBlock Name="TextBlockUserName" FontSize="15">UserName</TextBlock>
-                <TextBlock Margin="8,0,0,0" TextAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="TextBlockUserName" FontSize="15" FontWeight="Bold">UserName</TextBlock>
+                <TextBlock Margin="8,0,0,0" TextAlignment="Center" VerticalAlignment="Center" FontStyle="Italic">
                     @<Hyperlink Name="HyperlinkScreenName" Foreground="Gray" 
                                 MouseEnter="HyperlinkScreenName_MouseEnter"
                                 MouseLeave="HyperlinkScreenName_MouseLeave"

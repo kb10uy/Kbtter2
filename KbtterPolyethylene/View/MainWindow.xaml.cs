@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Kbtter;
+using KbtterPolyethylene.View.Authenticate;
 using KbtterPolyethylene.Common;
 using TweetSharp;
 
@@ -34,12 +35,22 @@ namespace KbtterPolyethylene.View
         void InitializeKbtterCore()
         {
             context = new KbtterContext("5bI3XiTNEMHiamjMV5Acnqkex", "ni2jGjwKTLcdpp1x6nr3yFo9bRrSWRdZfYbzEAZLhKz4uDDErN");
-            context.Kbtter.Authenticate("AccessToken", "AccessTokenSecret");
+            var acw = new AccountSelectWindow(context);
+            var atk=acw.SelectToken();
+            if (atk != null)
+            {
+                context.Kbtter.Authenticate(atk.Token, atk.TokenSecret);
 
-            context.RequestMainTabNew += AddNewTab;
+                context.RequestMainTabNew += AddNewTab;
 
-            context.Kbtter.StreamingStatus += (p) => this.Dispatch(() => Kbtter_StreamingStatus(p));
-            context.Kbtter.StartStreaming();
+                context.Kbtter.StreamingStatus += (p) => this.Dispatch(() => Kbtter_StreamingStatus(p));
+                context.Kbtter.StartStreaming();
+            }
+            else
+            {
+                Exit();
+            }
+
         }
 
         void InitializeShortcut()
@@ -76,7 +87,6 @@ namespace KbtterPolyethylene.View
         }
 
 
-
         #region UI隠蔽
 
         void AddNewTab(string cmd)
@@ -95,7 +105,7 @@ namespace KbtterPolyethylene.View
 
                 case "MEN":
                     var uit = CreateMainTab(new TextBlock { Text = target + "さんの情報" },
-                                            new Frame { Content = new UserPage() });
+                                            new Frame { Content = new UserPage(context,target) });
                     TabControlMain.Items.Add(uit);
                     uit.IsSelected = true;
                     break;

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Kbtter;
 using KbtterPolyethylene.Common;
-using Kb10uy.Extension;
 using TweetSharp;
 
 namespace KbtterPolyethylene.Common
@@ -127,11 +126,28 @@ namespace KbtterPolyethylene.Common
         }
     }
 
+    public static class MinimalistKb10uy
+    {
+        public static int GetDigitCount(this int t)
+        {
+            return (int)(Math.Log10(t) + 1.0);
+        }
+    }
+
     public class KbtterHyperlinkInfo
     {
         public string Display { get; set; }
         public string Navigate { get; set; }
         public int Start { get; set; }
         public int End { get; set; }
+    }
+
+    public class KbtterAuthenticateInfo
+    {
+        public List<OAuthAccessToken> AccessTokens { get; set; }
+        public KbtterAuthenticateInfo()
+        {
+            AccessTokens = new List<OAuthAccessToken>();
+        }
     }
 }

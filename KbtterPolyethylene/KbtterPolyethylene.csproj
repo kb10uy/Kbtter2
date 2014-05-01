@@ -63,12 +63,6 @@
     <Reference Include="Hammock.ClientProfile">
       <HintPath>..\packages\Hammock.1.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
     </Reference>
-    <Reference Include="Kb10uy">
-      <HintPath>..\Kb10uy\Kb10uy\bin\Release\Kb10uy.dll</HintPath>
-    </Reference>
-    <Reference Include="Kb10uy.Scripting">
-      <HintPath>..\Kb10uy\Scripting\bin\Release\Kb10uy.Scripting.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -109,6 +103,12 @@
     </Compile>
     <Compile Include="Common\KbtterUtil.cs" />
     <Compile Include="Common\KbtterWrap.cs" />
+    <Compile Include="View\Authenticate\AccountSelectWindow.xaml.cs">
+      <DependentUpon>AccountSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authenticate\NewAccountWindow.xaml.cs">
+      <DependentUpon>NewAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -157,6 +157,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\Authenticate\AccountSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Authenticate\NewAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="KbtterPolyethylene.View.Authenticate.NewAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="新アカウント設定" Height="100" Width="300" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary Source="../TwitterDictionary.xaml"/>
+    </Window.Resources>
+    <Grid Background="{StaticResource TwitterColorWhite}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="64"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" VerticalAlignment="Center">認証して、表示されたPINコードを入力してください。</TextBlock>
+        <TextBox Name="TextBoxPINCole" Grid.Row="1" FontSize="28"/>
+        <Button Name="ButtonSend" Click="ButtonSend_Click" Grid.Column="1" Grid.Row="1">OK</Button>
+    </Grid>
+</Window>

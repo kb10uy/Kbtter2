@@ -4,9 +4,16 @@ kb10uy
 
 ## 指針
 Kbtter1よりももっとタブ化する。
+Shrimp,mikutterっぽいUIを目指す。
 
 ##機能
-(追加予定)
+* 一般的なTwitterクライアントの機能
+* マルチアカウント
+* IronPython,IronRuby,Luaによるプラグイン機能
+
+##個人的に付けたい機能
+* mikutter,Shrimpのプラグインとの互換性。
+ - プラグインローダーを作ることで対処?
 
 ## 参考にしました
 Kbtter2はいろいろなTwitterクライアントを参考にします。
@@ -25,11 +32,16 @@ Kbtter2はいろいろなTwitterクライアントを参考にします。
 
 ##Kbtterのソースについて
 MIT Licenseとします。
+LICENSE.txtを参照してください。
 
 ##Special Thanks
-* azyobuzin
-* java_shit
-* ulicknormanowen 
+* azyobuzinさん
+ - GitHub上のソースでビルド出来なかった問題を解決していただきました。
+   現在このリポジトリにマージされています。
+* java_shitさん
+ - Entityの取り扱いについてアドバイスしていただきました。
+* ulicknormanowenさん
+ - Kbtter1時代からお世話になってます。
 
 
 ##ライセンス

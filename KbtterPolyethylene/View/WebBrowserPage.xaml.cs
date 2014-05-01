@@ -62,6 +62,7 @@ namespace KbtterPolyethylene.View
             nowuri = e.Uri;
             ButtonBack.IsEnabled = WebBrowserMain.CanGoBack;
             ButtonNext.IsEnabled = WebBrowserMain.CanGoForward;
+            TextBoxUrl.Text = nowuri.ToString();
         }
     }
 }

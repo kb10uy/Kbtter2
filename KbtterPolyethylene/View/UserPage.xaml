@@ -5,15 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
+      Loaded="Page_Loaded"
 	Title="UserPage">
 
-    <Grid>
+    <Grid Name="GridMain">
         <Grid.ColumnDefinitions>
-            
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            
+            <RowDefinition Height="96"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label>まだです</Label>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Image Name="ImageUserIcon" Margin="8" Width="80" Height="80"/>
+            <StackPanel Margin="8">
+                <TextBlock Name="TextBlockUserName" FontSize="32">UserName</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="16">@</TextBlock>
+                    <TextBlock Name="TextBlockUserScreenName" FontSize="16">ScreenName</TextBlock>
+                    <TextBlock FontSize="16" Foreground="Gray">(</TextBlock>
+                    <TextBlock Name="TextBlockUserId" FontSize="16" Foreground="Gray">UserId</TextBlock>
+                    <TextBlock FontSize="16" Foreground="Gray">)</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="8">
+            <TextBlock FontSize="14"><Hyperlink Name="HyperlinkUserUrl" RequestNavigate="HyperlinkUserUrl_RequestNavigate">UserURL</Hyperlink></TextBlock>
+            <TextBlock>・</TextBlock>
+            <TextBlock Name="TextBlockUserLocation" FontSize="14">Location</TextBlock>
+        </StackPanel>
+        <TextBlock Name="TextBlockUserBio" Grid.Row="2" Margin="8" FontSize="16">UserBio</TextBlock>
     </Grid>
 </Page>
